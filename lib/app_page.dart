@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:musicion/features/app/mobile/mobile_page.dart';
 
 class AppPage extends StatelessWidget {
   final String title;
 
-  AppPage({super.key, required this.title});
+  const AppPage({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('This is main page', style: TextStyle(fontSize: 48, fontWeight: FontWeight.w700, color: Colors.white)),
-      ),
-    );
+    return const MobileLayout();
   }
 }

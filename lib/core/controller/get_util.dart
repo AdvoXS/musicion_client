@@ -19,7 +19,7 @@ Future<Response> getResource(String resource) async{
       'Basic ${base64.encode(utf8.encode('$username:$password'))}';
 
   return get(
-      Uri.parse('http://localhost:8080/'),
+      Uri.parse('http://91.186.196.51:8080/'),
       headers:  <String, String>{'authorization': basicAuth}
   );
 }
