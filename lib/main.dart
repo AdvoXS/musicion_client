@@ -5,6 +5,7 @@ import 'package:musicion/features/register/presentation/page/register_login_page
 
 import 'core/controller/get_util.dart';
 import 'core/utils/presentation/app_colors.dart';
+import 'features/register/presentation/page/register_page.dart';
 
 void main() async {
   var loginResponse =
@@ -38,7 +39,7 @@ class MusicionApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColor.backgroundColor1,
         useMaterial3: true,
       ),
-      home: isAuth ? const AppPage(title: 'Musicion') : RegisterLoginPage(),
+      home: isAuth ? const AppPage(title: 'Musicion') : RegisterPage(),
     );
   }
 }
