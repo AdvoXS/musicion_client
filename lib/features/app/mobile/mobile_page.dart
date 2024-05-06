@@ -36,13 +36,13 @@ class _MobileLayoutState extends State<MobileLayout> {
               const Padding(padding: EdgeInsets.symmetric(vertical: 8)), ConstrainedBox(
                       constraints:
                           MediaQuery.of(context).size.shortestSide < 700
-                              ? BoxConstraints(maxWidth: 400)
-                              : BoxConstraints(maxWidth: 1200),
+                              ? const BoxConstraints(maxWidth: 400)
+                              : const BoxConstraints(maxWidth: 1200),
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: AppColor.backgroundColorBlock),
-                          child: TextField(style: const TextStyle(color: AppColor.searchTextFieldFont, fontSize: 16, fontWeight: FontWeight.w400),
+                          child: const TextField(style: TextStyle(color: AppColor.searchTextFieldFont, fontSize: 16, fontWeight: FontWeight.w400),
                               decoration: SearchTextFieldDecoration('Поиск')))),
               const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
               Expanded(

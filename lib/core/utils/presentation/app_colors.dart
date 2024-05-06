@@ -5,6 +5,7 @@ class AppColor {
   static const secondaryLogoTitleColor = Color(0xff248C73);
 
   static const regularTextColor = Color(0xff81D0BD);
+  static const mainTextColor = Color(0xffefeff1);
   static const regularHintTextColor = Color(0xff679C8F);
 
 
