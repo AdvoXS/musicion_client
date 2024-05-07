@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
 import 'package:musicion/app_page.dart';
 import 'package:musicion/core/utils/app_properties.dart';
+import 'package:musicion/features/auth/bloc/login_page_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/controller/get_util.dart';
@@ -12,21 +14,24 @@ import '../../../../../core/utils/presentation/enter_exit_page_route.dart';
 class LoginButton extends StatefulWidget {
   Widget loginWigjet;
   final TextEditingController loginController;
-
+  final GlobalKey<FormState> formKey;
   final TextEditingController passController;
 
   LoginButton(
       {super.key,
       required this.loginWigjet,
       required this.loginController,
-      required this.passController});
+      required this.passController, required this.formKey});
 
   @override
   _LoginButtonState createState() => _LoginButtonState();
 }
 
 class _LoginButtonState extends State<LoginButton> {
+  bool validated = false;
+  bool disabled = true;
   bool _load = false;
+  late final GlobalKey<FormState> formKey;
   Color backColor = const Color(0xffF1F1F1);
   final Color color = const Color(0xff222222);
   late Widget loginWigjet;
@@ -40,10 +45,12 @@ class _LoginButtonState extends State<LoginButton> {
     loginWigjet = widget.loginWigjet;
     loginController = widget.loginController;
     passController = widget.passController;
+    formKey = widget.formKey;
   }
 
   @override
   Widget build(BuildContext context) {
+    disabled = _load && !validated;
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -73,9 +80,9 @@ class _LoginButtonState extends State<LoginButton> {
                   }),
                   foregroundColor: MaterialStateProperty.all(color)),
               onPressed: () {
-                _load ? null : tryLogin();
+                disabled ? null : tryLogin();
               },
-              child: _load
+              child: _load && validated
                   ? const Padding(
                       padding: EdgeInsets.all(6),
                       child: Center(
@@ -98,26 +105,34 @@ class _LoginButtonState extends State<LoginButton> {
   }
 
   tryLogin() async {
-    setState(() {
-      _load = true;
-    });
-    final SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString(PREFS_USERNAME, loginController.text);
-    preferences.setString(PREFS_PASSWORD, passController.text);
-    Response response = await getResource('')
-        .timeout(const Duration(seconds: 5), onTimeout: () => Response('', 408));
-    await Future.delayed(const Duration(seconds: 1));
-    if (response.statusCode < 400 || response.statusCode == 404) {
+    validated = formKey.currentState!.validate();
+    if(validated) {
       setState(() {
-        Navigator.of(context).pop();
-        Navigator.push(
-            context,
-            EnterExitRoute(
-                exitPage: loginWigjet, enterPage: AppPage(title: 'Musicion')));
+        _load = true;
+      });
+      /*final SharedPreferences preferences = await SharedPreferences
+          .getInstance();
+      preferences.setString(PREFS_USERNAME, loginController.text);
+      preferences.setString(PREFS_PASSWORD, passController.text);
+      Response response = await getResource('')
+          .timeout(
+          const Duration(seconds: 5), onTimeout: () => Response('', 408));
+      await Future.delayed(const Duration(seconds: 1));
+      if (response.statusCode < 400 || response.statusCode == 404) {
+        setState(() {
+          Navigator.of(context).pop();
+          Navigator.push(
+              context,
+              EnterExitRoute(
+                  exitPage: loginWigjet,
+                  enterPage: AppPage(title: 'Musicion')));
+        });
+      }*/
+      LoginPageBloc bloc = BlocProvider.of<LoginPageBloc>(context);
+      bloc.add(LoginPageTryAuthEvent(loginController.text));
+      setState(() {
+        _load = false;
       });
     }
-    setState(() {
-      _load = false;
-    });
   }
 }

@@ -19,6 +19,8 @@ class AppColor {
   static const Color searchTextFieldFontHint = Color.fromARGB(255, 93, 99, 98);
   static const Color searchTextFieldFont = Color.fromARGB(255, 167, 175, 175);
 
+  static const Color errorColor = Color(0xffff4444);
+  static const Color errorColorBackground = Color(0xbff4444);
   static const Color mainItemColor = Color(0xff1AAF8C);
   /////////test colors
   static const primaryLogoTitleColor1 = Color(0xff1AAF8C);

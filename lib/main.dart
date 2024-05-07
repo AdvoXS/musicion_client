@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:musicion/app_page.dart';
 import 'package:musicion/features/auth/presentation/login_page.dart';
 import 'package:musicion/features/register/presentation/page/register_login_page.dart';
 
 import 'core/controller/get_util.dart';
 import 'core/utils/presentation/app_colors.dart';
+import 'features/auth/bloc/login_page_bloc.dart';
 import 'features/register/presentation/page/register_page.dart';
 
 void main() async {
@@ -18,13 +20,17 @@ void main() async {
 
 class MusicionApp extends StatelessWidget {
   final bool isAuth;
+  static const String appTitle = 'YourThings';
 
   const MusicionApp({super.key, required this.isAuth});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Musicion',
+    return BlocProvider(
+    create: (BuildContext context) => LoginPageBloc(),
+    child:
+    MaterialApp(
+      title: appTitle,
       theme: ThemeData(
         textTheme: const TextTheme(
                 bodyLarge: TextStyle(),
@@ -39,7 +45,7 @@ class MusicionApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColor.backgroundColor1,
         useMaterial3: true,
       ),
-      home: isAuth ? const AppPage(title: 'Musicion') : RegisterPage(),
-    );
+      home: isAuth ? const AppPage(title: appTitle) : LoginPage(title: appTitle),
+    ));
   }
 }

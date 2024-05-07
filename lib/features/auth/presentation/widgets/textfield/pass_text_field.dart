@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/presentation/constants.dart';
+
 class AppPassTextField extends StatefulWidget {
   final TextEditingController controller;
 
@@ -34,27 +36,26 @@ class _TextFieldState extends State<AppPassTextField> {
 
     return TextFormField(
       style: const TextStyle(color: Colors.white),
+      validator: (value)  {
+        if(value!.isEmpty) {
+          return ("Пароль не может быть пустым");
+        }
+        if(value.length < 6){
+          return ("Пароль не может содержать меньше 6 символов");
+        }
+        return null;
+      },
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: textController,
       decoration: InputDecoration(
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xffffffff), width: 2)),
-          enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xffffffff), width: 2)),
-          focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xffFFFFFF), width: 3)),
-          errorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xffff4444), width: 2)),
-          focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xffff4444), width: 3)),
-          disabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: Color(0xff6c6c6c), width: 2)),
+          border: InputBorders.border,
+          enabledBorder: InputBorders.enabledBorder,
+          focusedBorder: InputBorders.focusedBorder,
+          errorBorder: InputBorders.errorBorder,
+          focusedErrorBorder: InputBorders.focusedErrorBorder,
+          disabledBorder: InputBorders.disabledBorder,
           labelText: 'Пароль',
+          errorStyle: const TextStyle(color: Color(0xffff4444)),
           labelStyle: const TextStyle(color: Color(0xffdcdcdc)),
           suffixIcon: IconButton(
             //padding: const EdgeInsets.only(right: 5),
