@@ -91,9 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                                     decoration: BoxDecoration(
                                       //color: AppColor.errorColorBackground,
                                       borderRadius: const BorderRadius.all(
-                                          Radius.circular(8.0)),
+                                          Radius.circular(12.0)),
                                       border: Border.all(
-                                          width: 1, color: AppColor.errorColor),
+                                          width: 2, color: AppColor.errorColor),
                                     ),
                                     child:
                                           Row(mainAxisAlignment: MainAxisAlignment.center,

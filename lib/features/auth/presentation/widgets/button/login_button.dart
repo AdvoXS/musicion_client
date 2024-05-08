@@ -110,6 +110,8 @@ class _LoginButtonState extends State<LoginButton> {
       setState(() {
         _load = true;
       });
+
+      await Future.delayed(const Duration(seconds: 1));
       /*final SharedPreferences preferences = await SharedPreferences
           .getInstance();
       preferences.setString(PREFS_USERNAME, loginController.text);
