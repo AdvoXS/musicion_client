@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicion/app_page.dart';
-import 'package:musicion/features/auth/presentation/login_page.dart';
+import 'package:musicion/features/welcome/presentation/welcome_page.dart';
 
 import 'core/controller/get_util.dart';
 import 'core/utils/presentation/app_colors.dart';
@@ -20,15 +20,15 @@ class MusicionApp extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Musicion',
+      title: 'YourThings',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         scaffoldBackgroundColor: AppColor.backgroundColor1,
         useMaterial3: true,
       ),
       home: isAuth
-          ? AppPage(title: 'Musicion')
-          : LoginPage(title: 'Musicion'),
+          ? AppPage(title: 'YourThings')
+          : WelcomePage(),
     );
   }
 }
