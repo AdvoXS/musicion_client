@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
-import 'package:musicion/app_page.dart';
-import 'package:musicion/core/utils/app_properties.dart';
-import 'package:musicion/features/auth/bloc/login_page_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../../core/controller/get_util.dart';
 import '../../../../../core/utils/presentation/enter_exit_page_route.dart';
+import '../../../../app/app_page.dart';
+import '../../../bloc/login_page_bloc.dart';
 
 
 
@@ -134,6 +130,11 @@ class _LoginButtonState extends State<LoginButton> {
       bloc.add(LoginPageTryAuthEvent(loginController.text));
       setState(() {
         _load = false;
+        /*Navigator.of(context).pop();
+        Navigator.push(
+            context,
+            EnterExitRoute(
+                exitPage: loginWigjet, enterPage: const AppPage(title: 'Musicion')));*/
       });
     }
   }

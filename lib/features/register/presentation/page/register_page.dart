@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:musicion/features/register/presentation/page/enter_exit_page_int.dart';
-import 'package:musicion/features/register/presentation/page/register_login_page.dart';
 
 import '../../../../core/utils/presentation/scale_size.dart';
-import '../../../auth/presentation/widgets/textfield/login_text_field.dart';
 import '../button/next_button.dart';
+import 'enter_exit_page_int.dart';
+import 'register_login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -13,7 +12,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  EnterExitPage thisPageValue = RegisterLoginPage();
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -40,22 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               //(padding: EdgeInsets.only(bottom: screenHeight*0.02)),
-              thisPageValue,
-              //Padding(padding: EdgeInsets.only(bottom: screenHeight*0.04)),
-              Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.02),
-                child: NextButton(
-                    thisPage: thisPageValue, nextPage: thisPageValue = nextPage()),
-              )
+              const RegisterLoginPage(),
             ],
           ),
         ),
       ),
     );
-  }
-
-  @override
-  EnterExitPage nextPage() {
-    return thisPageValue.nextPage();
   }
 }

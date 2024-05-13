@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:musicion/core/utils/presentation/scale_size.dart';
 
 import '../../../../../core/utils/presentation/enter_exit_page_route.dart';
 

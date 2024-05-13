@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:musicion/features/register/presentation/button/register_text_field.dart';
-import 'package:musicion/features/register/presentation/page/enter_exit_page_int.dart';
 
-import '../../../../core/utils/presentation/scale_size.dart';
-import '../../../auth/presentation/widgets/textfield/default_input_decoration.dart';
-import '../button/next_button.dart';
+import '../button/register_text_field.dart';
 
-class RegisterPasswordPage extends StatefulWidget implements EnterExitPage{
+
+class RegisterPasswordPage extends StatefulWidget{
   const RegisterPasswordPage({super.key});
 
   @override
   State<RegisterPasswordPage> createState() => _RegisterPasswordPageState();
 
-  @override
-  EnterExitPage nextPage() {
-    // TODO: implement nextPage
-    throw UnimplementedError();
-  }
 }
 
 class _RegisterPasswordPageState extends State<RegisterPasswordPage> {

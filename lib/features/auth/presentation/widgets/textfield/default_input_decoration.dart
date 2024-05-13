@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+@Deprecated('Не дает адекватно кастомизировать текстовые поля. Лучше использовать константы для определения границ')
 class DefaultInputDecoration extends InputDecoration {
   const DefaultInputDecoration(String hintText)
       : super(

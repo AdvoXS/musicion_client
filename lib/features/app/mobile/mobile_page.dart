@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:musicion/core/utils/presentation/app_colors.dart';
-import 'package:musicion/features/app/mobile/widget/card/product_minimal_view.dart';
-import 'package:musicion/features/app/mobile/widget/textfield/search_text_field_decoration.dart';
+
+
+import '../../../core/utils/presentation/app_colors.dart';
+import 'widget/card/product_minimal_view.dart';
+import 'widget/textfield/search_text_field_decoration.dart';
 
 class MobileLayout extends StatefulWidget {
   @override

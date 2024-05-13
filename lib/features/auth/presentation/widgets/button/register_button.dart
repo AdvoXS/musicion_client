@@ -41,7 +41,7 @@ class RegisterButton extends StatelessWidget {
                 child: Center(
                     child: Text(label,
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500)))),
+                            fontSize: 20, fontWeight: FontWeight.w400)))),
           ),
         ),
       ],

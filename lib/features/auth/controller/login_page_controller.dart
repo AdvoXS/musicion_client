@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:http/http.dart';
 
 
 enum StatusFoundUser{
   notFound(errorMessage : 'Пользователь не найден'),
   found(errorMessage: ''),
-  badRequest(errorMessage: 'Ошибка получения данных о пользователе');
+  badRequest(errorMessage: 'Ошибка получения данных о пользователе'),
+  internalServerError(errorMessage: 'Ошибка сервера');
 
   const StatusFoundUser({required this.errorMessage});
   final String errorMessage;
@@ -19,8 +22,9 @@ class LoginPageController {
   };
 
   static Future<StatusFoundUser> tryFindUser(String userName) async {
-    return get(Uri.parse(
-            'http://localhost:8080/open-api/checkUser?username=$userName'))
+    var body = jsonEncode({'username' : userName});
+    return post(Uri.parse(
+            'http://localhost:8080/open-api/checkUser'), headers: {"Content-Type": "application/json"}, body: body)
         .then((value) => _httpCodeToEnum(value));
   }
 

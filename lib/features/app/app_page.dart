@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:musicion/features/app/mobile/mobile_page.dart';
+
+import 'mobile/mobile_page.dart';
 
 class AppPage extends StatelessWidget {
   final String title;

@@ -15,8 +15,14 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
       print('login page loading...');
     });
     on<LoginPageTryAuthEvent>((event, emit) async {
-      final StatusFoundUser statusFoundUser =
-          await LoginPageController.tryFindUser(event.userName);
+      StatusFoundUser statusFoundUser;
+      try {
+        statusFoundUser =
+        await LoginPageController.tryFindUser(event.userName);
+      }
+      catch(err) {
+        statusFoundUser = StatusFoundUser.badRequest;
+      }
       emit(LoginPageTryAuthState(statusFoundUser.errorMessage));
     });
   }
