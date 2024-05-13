@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:musicion/core/utils/presentation/app_colors.dart';
+
+import '../../../../../core/utils/presentation/app_colors.dart';
 class ProductMinimalView extends StatefulWidget{
   final String assetPath;
   final String text;

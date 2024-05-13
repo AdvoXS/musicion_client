@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:musicion/features/auth/presentation/widgets/button/login_button.dart';
-import 'package:musicion/features/auth/presentation/widgets/button/register_button.dart';
-import 'package:musicion/features/auth/presentation/widgets/textfield/login_text_field.dart';
-import 'package:musicion/features/auth/presentation/widgets/textfield/pass_text_field.dart';
 
 import '../../../core/utils/presentation/app_colors.dart';
+import 'widgets/button/login_button.dart';
+import 'widgets/button/register_button.dart';
+import 'widgets/textfield/login_text_field.dart';
+import 'widgets/textfield/pass_text_field.dart';
 
 class LoginPage extends StatelessWidget {
   final String title;
