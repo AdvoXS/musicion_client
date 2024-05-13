@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubTextWelcome extends StatelessWidget {
-   SubTextWelcome({super.key});
+  SubTextWelcome({super.key});
 
   static const String strongText = 'Платформа';
   static const String typingText = 'твоих вещей';
 
-  final TextStyle textStyle =
-  GoogleFonts.nunitoSans(textStyle:TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 32));
+  final TextStyle textStyle = GoogleFonts.nunitoSans(
+      textStyle: const TextStyle(
+          color: Colors.white, fontWeight: FontWeight.w400, fontSize: 32));
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class SubTextWelcome extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-             Text(strongText, style: textStyle),
+            Text(strongText, style: textStyle),
             const SizedBox(width: 10.0),
             DefaultTextStyle(
               style: textStyle,
